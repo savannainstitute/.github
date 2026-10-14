@@ -6,8 +6,8 @@ the organization's repositories, step by step, and what the words mean.
 ## The words
 
 - A repository is one project's files and their whole history.
-- The owner is the person named as the repository's owner. The owner decides who may work inside
-  the repository, and the owner is the only person who merges changes into it.
+- The owner is the person named as the repository's owner. The owner decides who may work inside the
+  repository, and the owner is the only person who merges changes into it.
 - A contributor is someone the owner has named. A contributor works on branches inside the
   repository.
 - A branch is a separate line of work. The main branch, called `main` in most repositories, holds

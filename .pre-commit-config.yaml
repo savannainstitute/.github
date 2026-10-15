@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/savannainstitute/standards
-    rev: 3a30c8a73940535d1e3bc16ab6b0515fe9a4a946
+    rev: ec7bf81e1095bfa8e9190a145b1c649b9c622e5d
     hooks:
       - id: rules-check
       - id: ruff-check

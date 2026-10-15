@@ -1,97 +1,105 @@
-# Contributing to a Savanna Institute repository
+﻿# Contributing to Savanna Institute repositories
 
-This page is for someone who has never opened a pull request. It says how a change gets into one of
-the organization's repositories, step by step, and what the words mean.
+This guide describes the contribution process taking effect on December 4, 2026. Each change to a
+repository's default branch requires a pull request and passing automated checks. The requirements
+apply equally to repository owners, contributors, and work produced with coding agents.
 
-## The words
+## Access and responsibility
 
-- A repository is one project's files and their whole history.
-- The owner is the person named as the repository's owner. The owner decides who may work inside the
-  repository, and the owner is the only person who merges changes into it.
-- A contributor is someone the owner has named. A contributor works on branches inside the
-  repository.
-- A branch is a separate line of work. The main branch, called `main` in most repositories, holds
-  the version everyone relies on. Nobody changes `main` directly, the owner included.
-- A fork is your own copy of a repository under your own account. Anyone can make one.
-- A pull request is a request to bring the changes on a branch into `main`. It shows every changed
-  line, runs the organization's checks, and holds the conversation about the change.
-- The check is the set of tests the organization runs on every pull request. A pull request can be
-  merged only when the check passes.
+Each repository has a designated owner who assigns contributors and merges pull requests. Owners and
+designated contributors work on branches within the repository. Other contributors submit pull
+requests from forks, subject to repository access and forking permissions. Confirm your role with
+the repository owner; contact Zack if the owner is unclear or you need organization membership.
 
-## Branch or fork: which one you use
+Private repositories require access before they can be cloned or forked. Their owners may disable
+forking. If access or forking restrictions prevent a contribution, contact the owner to arrange it.
+Two-factor authentication is required from November 20, 2026.
 
-If you own the repository, or the owner has named you a contributor, you work on a branch inside the
-repository. Otherwise you work on a fork.
+Only the repository owner merges changes into the default branch, usually named `main`. Owners may
+merge their own pull requests once all required checks pass; another person's approval is not
+required. Direct pushes, force pushes, and deletion of the default branch are prohibited.
 
-To tell which you are, open the repository on GitHub. If you can see a Settings tab, you are the
-owner. If not, ask the owner whether you are a contributor, or try to push a branch: a push that is
-refused means you work on a fork. Nothing breaks when you try.
+## Preparing a change
 
-To make a fork, open the repository on GitHub and press Fork. GitHub makes the copy under your
-account. Clone that copy to your computer, not the original.
+Clone the repository if you are an owner or designated contributor. Otherwise, use GitHub's Fork
+button and clone your fork. Follow the repository README for environment setup, dependencies, and
+test commands. Start a branch from the current default branch:
 
-## Making the change
-
-1. Clone the repository, or your fork of it, to your computer.
-2. Make a branch named for the change, for example `fix-plot-labels`:
-
-   ```text
-   git checkout -b fix-plot-labels
-   ```
-
-3. Make the change and commit it, in as many commits as you like. Each commit message says what the
-   commit does.
-4. Push the branch:
-
-   ```text
-   git push -u origin fix-plot-labels
-   ```
-
-## Opening the pull request
-
-GitHub prints a link after the push; open it, or go to the repository's page and press Compare and
-pull request. On a fork, the pull request goes from your fork's branch to the original repository's
-`main`.
-
-The description starts from a template. Write what the change does and why in a few sentences, then
-fill in the headings that apply:
-
-- Dependencies: each package the change adds, and what it is for.
-- Docs added: each new document outside the `docs` folder, and why it exists.
-- Tests removed or skipped: each test removed or skipped, and the reason.
-- A change to code with no new test needs a line starting with the words "No test because".
-
-Leave a heading alone when it does not apply. The check reads these headings, so a package added
-without a line under Dependencies fails the check.
-
-## Reading the check
-
-A minute or two after the pull request opens, the check reports at the bottom of the page. A green
-mark means it passed. A red mark means it found something: press Details, and read the lines that
-name a file, a line number and what to change. Each line says what to do.
-
-Fix each finding on your branch, commit, and push again. The check runs again on its own; nothing
-else is needed. If you work with a coding agent such as Claude Code, Codex or Gemini, paste the
-check's output to it and ask it to fix the findings; the repository carries instructions that tell
-the agent the rules.
-
-A finding marked warning does not stop the merge. It is there for you and the owner to read.
-
-## Merging
-
-The owner merges the pull request once the check passes. If you are the owner, you merge your own
-pull request; nobody else has to approve it. The branch is deleted when it merges, and the change is
-on `main`.
-
-## Running the checks before you push
-
-This is optional. Each repository carries a file that lets the same checks run on your computer
-every time you commit, so the pull request passes on the first try. Install the tool once:
-
-```text
-pip install pre-commit
-pre-commit install
+```sh
+git checkout main
+git pull --ff-only
+git checkout -b fix-plot-labels
 ```
 
-The repository's `README.md` says more. The files for coding agents work the same way: they are a
-convenience for your own computer, and the check on the pull request is what counts.
+Substitute the repository's default branch if it differs from `main`. When working in a fork, sync
+the fork with the original repository before starting. Commit the changes and push the branch:
+
+```sh
+git add <changed-files>
+git commit -m "Correct plot labels"
+git push -u origin fix-plot-labels
+```
+
+Include tests for changed behavior and update affected documentation. Requirements for source files,
+data, dependencies, and documentation are listed in the
+[automated check reference](https://github.com/savannainstitute/standards/blob/main/docs/RULES.md).
+Binary data uses Git LFS; run `git lfs install` once before working with it. Record data sources,
+licenses, units, and input or output status in the data README.
+
+## Pull requests
+
+Open a pull request using the link returned by the push or GitHub's Compare and pull request button.
+Select the original repository's default branch as the destination, including when submitting from a
+fork. Describe the problem, the change, and how it was validated.
+
+Complete the applicable fields in the pull request template. The automated check reads these labels:
+
+- `Dependencies:` names each added package and its purpose.
+- `Docs added` lists new Markdown files outside the docs directory and their purpose. README files
+  and the standard root files listed in the check reference are exempt.
+- `Tests removed or skipped` identifies affected tests and explains the reason.
+- `No test because` explains a source change submitted without a test change.
+
+Retain the template's labels and leave inapplicable fields empty. An explanation documents an
+exception for review; it does not disable other checks.
+
+## Checks and merge
+
+Continuous integration (CI) runs the shared checks on each pull request. These include formatting,
+static analysis, tests and coverage where applicable, secret detection, and the organization rules.
+Open a failed check's Details link to inspect its output. Rule findings identify the rule, file,
+line, and corrective action. Installation, infrastructure, and test failures may require reviewing
+the job log rather than a file-level finding.
+
+Correct failures on the same branch, commit, and push; this reruns the checks on the existing pull
+request. Warnings are available for review and do not block merging. Report an incorrect finding or
+a requirement that prevents valid work through the feedback process below.
+
+The owner reviews and merges the pull request after the required checks pass. GitHub automatically
+deletes merged branches within the repository. Update your local default branch before beginning the
+next change.
+
+Local checks are optional and can identify problems before submission. In the project's environment,
+install and run the configured pre-commit hooks:
+
+```sh
+pip install pre-commit
+pre-commit install
+pre-commit run --all-files
+```
+
+Local hooks use the versions configured in the repository; hosted checks determine whether the pull
+request can merge. Repository instructions for coding agents support the same contribution process.
+
+## Feedback on the standards
+
+Submit feedback through a
+[standards issue](https://github.com/savannainstitute/standards/issues/new) or contact Zack
+directly. Feedback before December 4 will inform the rollout; problems can also be reported
+afterward.
+
+Identify the requirement or rule ID, the repository or type of work affected, and the practical
+effect. Useful feedback includes requirements worth retaining, unclear instructions, unnecessary
+effort, incorrect findings, and steps that block an analysis or collaboration. Include an example
+and a suggested alternative where possible. State whether work is blocked and any relevant deadline.
+Send sensitive examples directly rather than posting them in a public issue.

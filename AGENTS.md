@@ -117,6 +117,8 @@ same ids its findings print. The full list with every shape the check looks for 
   pragma: no cover
   @pytest.mark.skip
   @pytest.mark.xfail
+  # hadolint ignore=DL3008
+  it.skip("a test name"
   ```
 
 - `always-true-test`: No test that cannot fail. To fix it: Assert on a value computed from a planted
@@ -174,6 +176,24 @@ same ids its findings print. The full list with every shape the check looks for 
   Co-authored-by: Claude <noreply@anthropic.com>
   Generated with [Claude Code]
   ```
+
+- `installer-committed`: Someone else's software is never committed: no wheel, executable or
+  installer. To fix it: Delete the file; the README or the environment file says where to get the
+  program.
+
+  ```text
+  metashape.whl
+  setup.exe
+  tool.msi
+  app.dmg
+  lib.deb
+  ```
+
+- `binary-outside-lfs`: A pull request that adds a binary file (an image, raster, point cloud,
+  video, model, archive, PDF, spreadsheet or R data file; SVG is text) adds it through Git LFS: the
+  path matches a filter=lfs line in .gitattributes and the committed file is the LFS pointer. To fix
+  it: Run git lfs install once, add the pattern to .gitattributes with git lfs track, and commit the
+  file again. A large or growing collection belongs in object storage, named in data/README.md.
 
 ## Rules that warn
 
@@ -246,6 +266,18 @@ same ids its findings print. The full list with every shape the check looks for 
   production-ready
   ```
 
+- `british-spelling`: Prose is written in American English. Code is not read, since a library's own
+  argument and function names are what they are. To fix it: Use the American spelling.
+
+  ```text
+  colour
+  behaviour
+  analyse
+  centre
+  labelled
+  grey
+  ```
+
 - `silent-default`: A required input has no silent default; the shapes below are reported for
   review. To fix it: Raise or stop when the input is missing, or state why the default is correct.
 
@@ -298,5 +330,9 @@ same ids its findings print. The full list with every shape the check looks for 
   drop_na(
   filter(!is.na(
   ```
+
+- `data-unlisted`: Every file under data/ is named in data/README.md, which gives its source, date,
+  license and units and says whether it is an input or an output. To fix it: Add a line for the file
+  to data/README.md, or move the file.
 
 <!-- Organization copy above; this repository's notes go below. -->

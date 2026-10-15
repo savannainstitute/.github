@@ -9,6 +9,6 @@ concurrency:
 
 jobs:
   checks:
-    uses: savannainstitute/standards/.github/workflows/checks.yml@4999fcd0455c4e7fce317d541d23f22aa0a14720
+    uses: savannainstitute/standards/.github/workflows/checks.yml@ec7bf81e1095bfa8e9190a145b1c649b9c622e5d
     with:
       runner: ${{ vars.CI_RUNNER || 'ubuntu-latest' }}

@@ -1,8 +1,20 @@
-﻿# Contributing to Savanna Institute repositories
+# Contributing to Savanna Institute repositories
 
-This guide describes the contribution process taking effect on December 4, 2026. Each change to a
-repository's default branch requires a pull request and passing automated checks. The requirements
-apply equally to repository owners, contributors, and work produced with coding agents.
+This guide describes the proposed contribution process for Savanna Institute repositories. Initial
+feedback is due November 13, 2026. Staged migration begins December 4, 2026, and all active
+organization repositories must comply with the standards by March 5, 2027. Feedback continues during
+migration and afterward.
+
+Under this process, each change to a repository's default branch requires a pull request and passing
+automated checks. The requirements apply equally to owners, contributors, and work produced with
+coding agents. Required checks and access changes will be activated with each owner during
+migration, after the setup is verified. Existing protections remain in effect until then.
+
+Shared standards will be adopted as tested versions, with updates to the workflow, local hooks, and
+agent instructions submitted together through pull requests. Routine checks will use hosted
+infrastructure; personal computers are not required shared runners by default. The compute budget is
+being assessed separately. Initial adoption, repository restructuring, data cleanup, and hosting
+changes will be coordinated within the migration schedule.
 
 ## Access and responsibility
 
@@ -95,8 +107,8 @@ request can merge. Repository instructions for coding agents support the same co
 
 Submit feedback through a
 [standards issue](https://github.com/savannainstitute/standards/issues/new) or contact Zack
-directly. Feedback before December 4 will inform the rollout; problems can also be reported
-afterward.
+directly. Submit initial feedback by November 13, 2026. Continue reporting problems during migration
+and after the March 5, 2027 compliance deadline.
 
 Identify the requirement or rule ID, the repository or type of work affected, and the practical
 effect. Useful feedback includes requirements worth retaining, unclear instructions, unnecessary

@@ -5,9 +5,10 @@ coding agents. Initial feedback is due November 13, 2026. The contribution polic
 migration begin December 4, 2026. All active organization repositories must meet the standards by
 March 5, 2027. Feedback continues during migration and afterward.
 
-The proposed release adds versioned standards adoption and shared usage monitoring. Deployment
-requires release validation and owner coordination. Existing repository protections remain in
-effect. The
+The supporting implementation is published and has passed automated checks, including versioned
+standards adoption and usage reporting. Scheduled monitoring remains disabled pending operational
+setup. Research repositories have not been migrated; each project's adoption requires validation and
+coordination with its owner. Existing repository protections remain in effect. The
 [automated check reference](https://github.com/savannainstitute/standards/blob/main/docs/RULES.md)
 describes current rule behavior; a passing check does not establish scientific validity.
 

@@ -151,6 +151,14 @@ do not become required shared infrastructure by default.
 
 ## Standards updates and compute
 
+Use the
+[scientific review record](https://github.com/savannainstitute/standards/blob/main/docs/scientific-review.md)
+to document method checks and expected results. The
+[adoption and recovery procedure](https://github.com/savannainstitute/standards/blob/main/docs/adoption-review.md)
+provides the installation, pilot, rollback, compute, and backup-administration records. These
+records make the proposed process reviewable before project migration; they do not certify existing
+work.
+
 Under the proposed update process, repositories adopt a tested standards version. An update pull
 request changes the workflow commit reference, local hooks, and agent instructions together. The
 standards maintainer tests representative Python, R, and application projects, checks that later

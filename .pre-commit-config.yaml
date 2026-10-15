@@ -1,9 +1,9 @@
 repos:
-  - repo: https://github.com/savannainstitute/standards
-    rev: 049d382a82f39372474d45310f682ab6170c0f0c
-    hooks:
-      - id: rules-check
-      - id: ruff-check
-      - id: ruff-format
-      - id: yamllint
-      - id: markdown-format
+- repo: https://github.com/savannainstitute/standards
+  rev: 1fa826deb4061e6e622232da5b51c19987a344a6
+  hooks:
+  - id: rules-check
+  - id: ruff-check
+  - id: ruff-format
+  - id: yamllint
+  - id: markdown-format

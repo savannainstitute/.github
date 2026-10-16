@@ -58,11 +58,20 @@ secret detection, and organization rules. Failed checks link to logs with the fi
 failures on the same branch and push to rerun the checks. Warnings do not block merging. Report
 incorrect findings or requirements that prevent valid work through the feedback process below.
 
-For supported coverage reports, the current floor is 75% of measured code lines. An existing project
-below that floor may use a recorded starting percentage tied to a commit. Coverage must remain at or
-above that starting value, and tests must cover at least 90% of measured changed lines while overall
-coverage remains below 75%. The baseline does not automatically increase after each pull request.
-Coverage measures execution, not whether the method or expected result is correct.
+Tests should demonstrate the behavior affected by a change, including consequential calculations,
+data preservation, and relevant failure cases. Expected results need an independent basis, and tests
+must fail when the behavior is wrong. The owner and reviewer identify testing criteria based on
+intended use, consequences of errors, and the existing test suite. Record these criteria and the
+commands or procedures used to evaluate them in the repository.
+
+Coverage reports identify untested lines. Numeric targets are set per repository when justified by
+its testing needs; coverage otherwise reports without a percentage gate. Failed tests still block
+merging. Any targets and their rationale are reviewed in the standards repository and take effect
+when the project adopts that release. Test the intended pass/fail behavior before enabling required
+checks. The
+[coverage policy reference](https://github.com/savannainstitute/standards/blob/main/overrides/README.md#coverage-targets)
+describes configuration and missing-report handling. Scientific validation requires the evidence and
+review described below, regardless of the coverage percentage.
 
 Local checks are optional for contributors and required by the shared coding-agent instructions. Run
 the repository's configured pre-commit hooks to find problems before submission:

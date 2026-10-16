@@ -1,16 +1,14 @@
 ﻿# Contributing to Savanna Institute repositories
 
-This guide sets out proposed standards for organization repositories, including work produced with
-coding agents. Initial feedback is due November 13, 2026. The contribution policy and staged
-migration begin December 4, 2026. All active organization repositories must meet the standards by
-March 5, 2027. Feedback continues during migration and afterward.
+This guide is a draft for review, including the requirements and adoption schedule. Initial feedback
+is due November 13, 2026. The schedule starts the contribution policy and staged migration on
+December 4, 2026, with March 5, 2027 as the target for active repositories to meet the agreed
+standards. Feedback continues during migration and afterward.
 
-The supporting implementation is published and has passed automated checks, including versioned
-standards adoption and usage reporting. Scheduled monitoring remains disabled pending operational
-setup. Research repositories have not been migrated; each project's adoption requires validation and
-coordination with its owner. Existing repository protections remain in effect. The
+The
 [automated check reference](https://github.com/savannainstitute/standards/blob/main/docs/RULES.md)
-describes current rule behavior; a passing check does not establish scientific validity.
+describes the available checks. Each project's adoption includes validation and coordination with
+its owner. Scientific validation requires the evidence and review described below.
 
 ## Ownership and access
 
@@ -18,8 +16,8 @@ Each repository has a designated owner responsible for its contributors, mainten
 Owners and designated contributors work on branches within the repository. Other contributors use
 forks where access and forking permissions allow. If private repository access or forking
 restrictions prevent a contribution, contact the owner to arrange access. Contact Zack if ownership
-is unclear. Two-factor authentication is required by November 20, 2026, including for outside
-collaborators.
+is unclear. The draft schedule includes two-factor authentication by November 20, 2026 for members
+and outside collaborators.
 
 From December 4, changes to the default branch go through pull requests, including the owner's work.
 Only the owner merges. Owners may merge their own pull requests once required checks pass; a second
@@ -106,9 +104,9 @@ repository documentation:
 
 The owner arranges review by someone with relevant scientific expertise, preferably someone other
 than the author. That reviewer can assess the method, reference cases, and outputs without reading
-the implementation language. Technical review may require a different person. Zack is not the
-default scientific reviewer for every repository. If suitable review is unavailable, record that
-limitation and resolve it before relying on affected results for research or operational decisions.
+the implementation language. Technical review may require a different person. If suitable review is
+unavailable, record that limitation and resolve it before relying on affected results for research
+or operational decisions.
 
 Automate the reference comparisons where practical. A deliberately wrong result must fail the
 comparison, and a correct reference case must pass. An agent's output or a previous program's output
@@ -132,11 +130,11 @@ reference titles. A spelling correction must not change a public interface or sc
 Review the diff after an agent's correction pass; a second formatting pass should leave it
 unchanged.
 
-The revised spelling check excludes inline backtick literals and Markdown block quotations. It
-detects a limited set of patterns, and other false positives remain possible. Findings are advisory.
-Report these false positives with the affected rule and context; do not change a required literal
-merely to remove a warning. The existing tools do not provide a verified automatic correction
-process across all supported coding agents.
+The spelling check excludes inline backtick literals and Markdown block quotations. It detects a
+limited set of patterns, and other false positives remain possible. Findings are advisory. Report
+these false positives with the affected rule and context; do not change a required literal merely to
+remove a warning. The existing tools do not provide a verified automatic correction process across
+all supported coding agents.
 
 ## Repository structure, data, and deployments
 
@@ -155,8 +153,8 @@ existing clones.
 Services the organization relies on use organization-owned hosting accounts with more than one
 administrator and deploy from the default branch through the hosting integration. Review existing
 deployments individually. If a service cannot support that arrangement, document the alternative,
-responsible maintainer, access recovery, and deployment procedure with the owner. Personal computers
-do not become required shared infrastructure by default.
+responsible maintainer, access recovery, and deployment procedure with the owner. Record who can
+maintain the service and recover access.
 
 ## Standards updates and compute
 
@@ -191,15 +189,13 @@ additional cost of pilot checks. Review usage by repository and workflow; distin
 storage, and usage before discounts from actual charges. No workflow activity does not establish
 that a repository is inactive. Disabled workflows can make recent usage unrepresentative.
 
-The proposed budget is shared across the organization. Individual monthly shares and automatic
-shutdowns based on an owner's share are not part of initial adoption. No spending amount is set by
-this proposal. Before activating budget controls, identify the billing administrator and backup,
-notification recipients, spending authority, and recovery procedure. GitHub
+The compute budget is shared across the organization. Before setting a spending limit, identify the
+billing administrator and backup, notification recipients, spending authority, and recovery
+procedure. Review measured usage and pilot costs to select the amount. GitHub
 [budget alerts and stop-usage controls](https://docs.github.com/en/billing/how-tos/set-up-budgets)
-are different settings; a spending stop can prevent required checks from running. The revised daily
-monitor reports usage and drift. It does not disable workflows, reactivate them at month rollover,
-or enable required checks. Legacy disabled records remain available for manual review. Validate the
-replacement in a dry run before enabling its schedule.
+are different settings; a spending stop can prevent required checks from running. The reporting job
+records usage and repository drift. Validate its planned report and state writes in a dry run and
+assign responsibility for reviewing reports before enabling the schedule.
 
 ## Migration and maintenance
 
@@ -218,9 +214,9 @@ Current rules check the whole repository unless their scope explicitly limits th
 Staging does not exempt old files automatically. Coordinate renaming, restructuring, data
 relocation, history cleanup, and hosting changes separately within the migration schedule. Record a
 temporary exception's scope, reason, responsible owner, and review date; test any check
-configuration needed to implement it. Raise deadline risks early. Active repositories must meet the
-standards by March 5, 2027; inactive repositories may be archived, with compliance required before
-work resumes.
+configuration needed to implement it. Raise deadline risks early. The target for active repositories
+is March 5, 2027; inactive repositories may be archived, with compliance required before work
+resumes.
 
 The standards coordinator maintains the shared checks and operating instructions. Identify a backup
 administrator during migration. Review recurring failures and contributor feedback periodically;
